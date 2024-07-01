@@ -1,0 +1,15 @@
+en esta parte van a ir las secciones, componentes, hooks, etc. que sea parte de la logica del front de la sección.
+Se va a seguir para esta parte la arquitectura de "Screaming Architecture"
+
+https://medium.com/all-you-need-is-clean-code/screaming-architecture-a2cd25fe3eec
+
+https://dev.to/profydev/screaming-architecture-evolution-of-a-react-folder-structure-4g25?ref=dailydev
+
+En forma simple
+
+Modulos tiene carpetas que representan las "paginas" o "modulos" y dentro tiene todo lo necesario para que ese "modulo" funcione.
+
+Ejemplo, si tenemos una pagina llamada "articulos de blog" en modulos tendremos una carpeta llamada "ArticulosBlog"
+
+y dentro tendrá todo lo que necesita "ArticulosBlog" para funcionar, componentes, hooks, lib, etc. pero con la condicion de que el código que se ponga ahi solo sirve
+para el modulo, en este caso "ArticulosBlog"
