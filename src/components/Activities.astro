@@ -1,0 +1,38 @@
+---
+interface Props {
+  title: string;
+  href: string;
+  img: string;
+}
+
+const { href, title, img } = Astro.props;
+---
+
+
+
+<div class="path-col" style="color: rgb(145, 82, 168);">
+  <span  class="path-line d-none d-lg-flex" style="background: rgb(145, 82, 168);"></span>
+  <a  href="#/salon/225/ficha-docente/7">
+    <div class="hexagon-base">
+        <div  class="hexagon" style='background-image: url("https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image"); border-color: rgb(145, 82, 168);'>
+        <div class="left-side" style="border-color: rgb(145, 82, 168);"></div>
+        <div class="right-side" style="border-color: rgb(145, 82, 168);"></div>
+        <p class="subtitle">{title}</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+<style>
+
+.hexagon-base:hover .hexagon {
+    opacity: 1;
+}
+
+.hexagon:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    background-image: url(https://potenciaqa.vincoorbisdev.com/app/assets/img/eye.png) !important;
+}
+
+</style>

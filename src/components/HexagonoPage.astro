@@ -1,0 +1,27 @@
+---
+
+interface Props {
+  name?: string;
+  class:string;
+href?:string;
+}
+
+const { name, class: className, href  } = Astro.props;
+
+
+---
+
+<a href={href} >
+    <div  class={className} >
+       <div class="left-side"></div>
+       <div class="right-side"></div>
+       <label class="name">{name}</label>
+    </div>
+ </a>
+
+ <style>
+    a{
+        width: 200px;
+    }
+
+ </style>

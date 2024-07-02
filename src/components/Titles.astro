@@ -1,0 +1,77 @@
+---
+
+interface Props {
+  title: string;
+
+}
+
+const { title } = Astro.props;
+---
+
+
+<div class="path-nav">
+    <button class="prev-btn btn-blank">
+      <i class="fa fa-angle-left" style="color: rgb(39, 118, 213);"></i>
+  </button>
+    <h2
+      style="color: rgb(39, 118, 213); border-bottom: 3px solid rgb(39, 118, 213);"  >
+      {title}
+    </h2>
+    <button class="next-btn btn-blank">
+      <i class="fa fa-angle-right" style="color: rgb(39, 118, 213);"></i>
+    </button>
+  </div>
+  
+  <style>
+    @media (min-width: 768px) {
+      .path-nav {
+        margin: 0 35px;
+      }
+    }
+  
+    .path-nav {
+      position: relative;
+      margin: 0 10px;
+    }
+  
+    .path-nav > button:disabled {
+      opacity: 0.4;
+    }
+  
+    button.btn-blank:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  
+    .path-nav > .prev-btn {
+      left: 0;
+    }
+  
+    .path-nav > button {
+      position: absolute;
+      color: #2776d5;
+      font-size: 1.7em;
+      background: none;
+      border: 0;
+      top: 0;
+      cursor: pointer;
+    }
+  
+    button.btn-blank {
+      font-size: 14px;
+      background-color: transparent;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+    }
+  
+    h2 {
+      color: #2776d5;
+      text-align: center;
+      font-size: 1.8em;
+      border-bottom: 1px solid #000;
+      padding-bottom: 20px;
+      font-weight: bold;
+    }
+  </style>
+  

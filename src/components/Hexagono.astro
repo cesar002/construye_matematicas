@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+  clave: string;
+  href: string;
+  descarga: string;
+}
+
+const { href, title, clave, descarga } = Astro.props;
+---
+
+<div class="honeycomb-row flex-wrap flex-md-nowrap">
+  <span>
+    <a href="#/salon/225/path?bimester=1">
+      <div class="hexagon d-none d-lg-block" style='border-color: rgb(145, 82, 168); background-image: url("https://potenciaback.vincoorbisdev.com/static/icons/primary-build-your-math.png");'>
+        <div class="left-side" style="border-color: rgb(145, 82, 168)"></div>
+        <div class="right-side" style="border-color: rgb(145, 82, 168)"></div>
+        <label class="name">Construye tus matemá...</label>
+        <p class="subtitle">CLAVE00000 P1A</p>
+      </div>
+    </a>
+    <div style="text-align: center;">
+      <button
+        data-value="225"
+        type="button"
+        style="background: transparent; border: 0px; cursor: pointer; font-size: 14px; margin-top: 35px; margin-bottom: 10px;">
+        <i class="fa fa-cloud-download" aria-hidden="true">
+        </i>
+        Descargar
+      </button>
+    </div>
+  </span>
+
+
+  
+</div>
