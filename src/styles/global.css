@@ -1,4 +1,4 @@
-@import "@fortawesome/fontawesome-free/css/all.min.css";
+
 
 ._text-right{
     text-align:right
@@ -1643,51 +1643,51 @@ footer .column>.list.-noicons li:hover{
     border-color:#03a9f4
 }
 .hexagon.-idea{
-    background-image:url("/public/hexagon/idea.jpg")
+    background-image:url("/hexagon/idea.jpg")
 }
 .hexagon.-idea,.hexagon.-idea>.left-side,.hexagon.-idea>.right-side{
     border-color:#e91e63
 }
 .hexagon.-create{
-    background-image:url("/public/hexagon/create.jpg")
+    background-image:url("/hexagon/create.jpg")
 }
 .hexagon.-create,.hexagon.-create>.left-side,.hexagon.-create>.right-side{
     border-color:#689f38
 }
 .hexagon.-abilities{
-    background-image:url("/public/hexagon/abilities.jpg")
+    background-image:url("/hexagon/abilities.jpg")
 }
 .hexagon.-abilities,.hexagon.-abilities>.left-side,.hexagon.-abilities>.right-side{
     border-color:#fb8c00
 }
 .hexagon.-discoverh{
-    background-image:url("/public/hexagon/discover-math.png")
+    background-image:url("/hexagon/discover-math.png")
 }
 .hexagon.-discoverh,.hexagon.-discoverh>.left-side,.hexagon.-discoverh>.right-side{
     border-color:#ff814a
 }
 .hexagon.-classroomh{
     border-color:#3a86ff;
-    background-image:url("/public/hexagon/classroomh.png")
+    background-image:url("/hexagon/classroomh.png")
 }
 .hexagon.-classroomh>.left-side,.hexagon.-classroomh>.right-side{
     border-color:#3a86ff
 }
 .hexagon.-playh{
-    background-image:url("/public/hexagon/play.png")
+    background-image:url("/hexagon/play.png")
 }
 .hexagon.-playh,.hexagon.-playh>.left-side,.hexagon.-playh>.right-side{
     border-color:#8338ec
 }
 .hexagon.-discover-low{
     border-color:#03a9f4;
-    background-image:url("/public/hexagon/discover-low.jpg")
+    background-image:url("/hexagon/discover-low.jpg")
 }
 .hexagon.-discover-low>.left-side,.hexagon.-discover-low>.right-side{
     border-color:#03a9f4
 }
 .hexagon.-idea-low{
-    background-image:url("/public/hexagon/idea-low.jpg")
+    background-image:url("/hexagon/idea-low.jpg")
 }
 .hexagon.-idea-low,.hexagon.-idea-low>.left-side,.hexagon.-idea-low>.right-side{
     border-color:#e91e63
@@ -1770,13 +1770,13 @@ footer .column>.list.-noicons li:hover{
     border-color:#f5ba15
 }
 .hexagon.-view{
-    background-image:url("/public/actions/view.jpg")
+    background-image:url("/actions/view.jpg")
 }
 .hexagon.-view,.hexagon.-view>.left-side,.hexagon.-view>.right-side{
     border-color:#d40080
 }
 .hexagon.-add{
-    background-image:url("/public/actions/add.jpg")
+    background-image:url("/actions/add.jpg")
 }
 .hexagon.-add,.hexagon.-add>.left-side,.hexagon.-add>.right-side{
     border-color:#00952c
@@ -2400,10 +2400,10 @@ table.table-calendar .badge-set_title{
     background-repeat:no-repeat
 }
 .discover-title{
-    background-image:url("/public/record/discover-title.png")
+    background-image:url("/record/discover-title.png")
 }
 .idea-title{
-    background-image:url("/public/record/idea-title.png")
+    background-image:url("/record/idea-title.png")
 }
 .create-title{
     background-image:url("/app/assets/img/record/create-title.png")
@@ -2423,7 +2423,7 @@ table.table-calendar .badge-set_title{
     }
 }
 .ideacreate-title{
-    background-image:url("/public/record/ideacreate-title.png")
+    background-image:url("/record/ideacreate-title.png")
 }
 .cutout-title{
     line-height:3.8em;

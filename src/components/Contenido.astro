@@ -11,8 +11,8 @@ const { title, imgs, class: className, name } = Astro.props as Props;
 
 <div data-name={name}>
   <h1 class={className}>{title}</h1>
-  {Array.isArray(imgs) && imgs.slice(0, 10).map((img) => (
+  { imgs.slice(0, 10).map((img) => (
     <img class="_img-responsive img-framed" src={img} alt="Image" />
-  ))}
+  )) }
   <hr />
 </div>
