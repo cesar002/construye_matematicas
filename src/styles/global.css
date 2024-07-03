@@ -1567,7 +1567,8 @@ footer .column>.list.-noicons li:hover{
     color:#263238;
     -webkit-transform:translateX(-25%);
     transform:translateX(-25%);
-    font-weight:700
+    font-weight:700;
+    padding-top: 1rem;
 }
 .hexagon .popover,.hexagon .subtitle{
     position:absolute;
@@ -2395,13 +2396,14 @@ table.table-calendar .badge-set_title{
     text-indent:-9999px;
     line-height:2em;
     margin:40px 0;
+    padding: 9px;
     background-repeat:no-repeat
 }
 .discover-title{
-    background-image:url("/app/assets/img/record/discover-title.png")
+    background-image:url("/public/record/discover-title.png")
 }
 .idea-title{
-    background-image:url("/app/assets/img/record/idea-title.png")
+    background-image:url("/public/record/idea-title.png")
 }
 .create-title{
     background-image:url("/app/assets/img/record/create-title.png")
@@ -2421,7 +2423,7 @@ table.table-calendar .badge-set_title{
     }
 }
 .ideacreate-title{
-    background-image:url("/app/assets/img/record/ideacreate-title.png")
+    background-image:url("/public/record/ideacreate-title.png")
 }
 .cutout-title{
     line-height:3.8em;

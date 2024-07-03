@@ -12,9 +12,9 @@ const { href, title, img } = Astro.props;
 
 <div class="path-col" style="color: rgb(145, 82, 168);">
   <span  class="path-line d-none d-lg-flex" style="background: rgb(145, 82, 168);"></span>
-  <a  href="#/salon/225/ficha-docente/7">
+  <a  href={href}>
     <div class="hexagon-base">
-        <div  class="hexagon" style='background-image: url("https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image"); border-color: rgb(145, 82, 168);'>
+      <div class="hexagon" style={`background-image: url(${img}); border-color: rgb(145, 82, 168);`}>
         <div class="left-side" style="border-color: rgb(145, 82, 168);"></div>
         <div class="right-side" style="border-color: rgb(145, 82, 168);"></div>
         <p class="subtitle">{title}</p>

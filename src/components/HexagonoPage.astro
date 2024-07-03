@@ -1,27 +1,24 @@
 ---
-
 interface Props {
   name?: string;
-  class:string;
-href?:string;
+  class: string;
+  href?: string;
+  key?: number;
 }
 
-const { name, class: className, href  } = Astro.props;
-
-
+const { name, class: className, href } = Astro.props;
 ---
 
-<a href={href} >
-    <div  class={className} >
-       <div class="left-side"></div>
-       <div class="right-side"></div>
-       <label class="name">{name}</label>
-    </div>
- </a>
+<a href={href}>
+  <div class={className}>
+    <div class="left-side"></div>
+    <div class="right-side"></div>
+    <label class="name">{name}</label>
+  </div>
+</a>
 
- <style>
-    a{
-        width: 200px;
-    }
-
- </style>
+<style>
+  a {
+    width: 200px;
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+import TitlesPage from "../components/TitlesPage.astro";
+import HexagonoPages from "../components/HexagonoPage.astro";
+---
+
+<TitlesPage title="Actividad 1  Número. Adición y sustracción" />
+
+<div class="d-flex flex-column flex-lg-row justify-content-between record-nav">
+  {
+    ["Descubre", "Idea y Crea", "Classroom", ""].map((name, index) => (
+      <HexagonoPages
+        key={index}
+        name={name}
+        class={`hexagon ${
+          index === 0
+            ? "-discoverh"
+            : index === 1
+              ? "-idea"
+              : index === 2
+                ? "-classroomh"
+                : "-playh"
+        }`}
+        href={
+          name === "Classroom"
+            ? "https://classroom.google.com/c/MTU4MTk4MTMyODM2"
+            : undefined
+        }
+      />
+    ))
+  }
+
+  <div class="record-actions">
+    <br />
+    <div class="-hexagon-line">
+      <HexagonoPages class="hexagon -tiny -add" />
+    </div>
+    <HexagonoPages class="hexagon -tiny -view" />
+  </div>
+</div>

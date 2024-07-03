@@ -4,74 +4,57 @@ import Hexagono from "../components/Hexagono.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <main class="hexagon-container">
+  <div class="honeycomb">
     <div class="honeycomb-row flex-wrap flex-md-nowrap">
       <Hexagono
-        title="Construye tus matemá..."
-        href="Construye tus matemá..."
-        clave="Construye tus matemá..."
-        descarga="Construye tus matemá..."
+        title="Construye tus matemáticas"
+        href="/salon"
+        clave="Clav0000"
+        descarga="Descarga material"
       />
       <Hexagono
         title="Otro hexágono"
-        href="Otro hexágono"
+        href="/salon"
         clave="Otro hexágono"
-        descarga="Otro hexágono"
+        descarga="Descarga otro material"
       />
       <Hexagono
         title="Más hexágonos"
-        href="Más hexágonos"
-        clave="Más hexágonos"
-        descarga="Más hexágonos"
-      />
-
-      <Hexagono
-        title="Más hexágonos"
-        href="Más hexágonos"
-        clave="Más hexágonos"
-        descarga="Más hexágonos"
+        href="/salon"
+        clave="Clave000000"
+        descarga="Descarga más material"
       />
       <Hexagono
-        title="Más hexágonos"
-        href="Más hexágonos"
-        clave="Más hexágonos"
-        descarga="Más hexágonos"
+        title="Construye tus matemáticas"
+        href="/salon"
+        clave="Construye tus matemáticas"
+        descarga="Descarga material"
+      />
+      <Hexagono
+        title="Otro hexágono"
+        href="/salon"
+        clave="Otro hexágono"
+        descarga="Descarga otro material"
       />
       <Hexagono
         title="Más hexágonos"
-        href="Más hexágonos"
-        clave="Más hexágonos"
-        descarga="Más hexágonos"
-      />
-     
+        href="/salon"
+        clave="Clave000000"
+        descarga="Descarga más material"
+        />
+      </div>
     </div>
-  </main>
-</Layout>
+    
+  </Layout>
 
-<style>
   
-  @media (min-width: 768px) {
-    .classrooms .honeycomb-row {
-        margin-bottom: 35px;
+  <style>
+    .honeycomb {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
     }
-}
+  </style>
 
-.honeycomb-row {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    margin: 0 auto 13px;
-}
-
-@media (min-width: 768px) {
-    .flex-md-nowrap {
-        -ms-flex-wrap: nowrap !important;
-        flex-wrap: nowrap !important;
-    }
-}
-
-.flex-wrap {
-    -ms-flex-wrap: wrap !important;
-    flex-wrap: wrap !important;
-}
-</style>
