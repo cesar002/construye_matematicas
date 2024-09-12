@@ -10,43 +10,43 @@ const idSalon = Astro.params["idSalon"];
 const actividadesService = new ActividadesService(new ActividadesLegacyRepository());
 
 const actividades = await actividadesService.getActividades(idSalon);
----
 
-<Layout title="Welcome to Astro.">
-  <Titles title="Número. Adición y sustracción" />
+
+
+function chunkArray(arr: any[], chunkSize: number) {
+  const result = [];
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    result.push(arr.slice(i, i + chunkSize));
+  }
+  return result;
+}
+
+
+const actividadesGrouped = chunkArray(actividades.results, 3);
+
+---
+<Layout title="Construye tus matemáticas">
+  <Titles title={actividades.results[0].sequenceName} />
 
   <div>
     <div class="path-wrapper">
-        <div class="path-row" style="color: rgb(145, 82, 168);">
-        <Activities title="Actividad 1" href="/page" img="https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image" />
-        <Activities title="Actividad 1" href="/page" img="https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image" />
-        <Activities title="Actividad 1" href="/page" img="https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image" />
-        </div>
-
-      <div class="path-turn d-none d-lg-flex" style="background: rgb(145, 82, 168); border-color: rgb(145, 82, 168);"></div>
-      <div class="path-row" style="color: rgb(145, 82, 168);">
-        <Activities title="Actividad 1" href="/page" img="https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image" />
-        <Activities title="Actividad 1" href="/page" img="https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image" />
-        <Activities title="Actividad 1" href="/page" img="https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image" />
-      </div>
-	  <div class="path-turn d-none d-lg-flex" style="background: rgb(145, 82, 168); border-color: rgb(145, 82, 168);"></div>
-	  <div class="path-row" style="color: rgb(145, 82, 168);">
-		<Activities title="Actividad 1" href="/page" img="https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image" />
-		<Activities title="Actividad 1" href="/page" img="https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image" />
-		<Activities title="Actividad 1" href="/page" img="https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image" />
-	  </div>
-	
-	 <div class="path-turn d-none d-lg-flex" style="background: rgb(145, 82, 168); border-color: rgb(145, 82, 168);"></div>
-	  <div class="path-row" style="color: rgb(145, 82, 168);">
-		<Activities title="Actividad 1" href="/page" img="https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image" />
-		<Activities title="Actividad 1" href="/page" img="https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image" />
-		<Activities title="Actividad 1" href="/page" img="https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image" />
-	  </div>
-   
-
-
+      {actividadesGrouped.map((grupo, index) => (
+        <>
+          <div class="path-row" style="color: rgb(145, 82, 168);">
+            {grupo.map((actividad) => (
+              <Activities 
+                title={actividad.title} 
+                href={`${idSalon}/ficha-docente/${actividad.id}`} 
+                img={actividad.fileSmallThumbnail || "https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image"} 
+              />
+            ))}
+          </div>
+          {index < actividadesGrouped.length - 1 && (
+            <div class="path-turn d-none d-lg-flex" style="background: rgb(145, 82, 168); border-color: rgb(145, 82, 168);"></div>
+          )}
+        </>
+      ))}
     </div>
- </div>
-  
-
+  </div>
 </Layout>
+

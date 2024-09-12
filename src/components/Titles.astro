@@ -20,6 +20,48 @@ const { title } = Astro.props;
       <i class="fa fa-angle-right" style="color: rgb(39, 118, 213);"></i>
     </button>
   </div>
+
+
+  <script>
+let currentIndex = 1; // Valor inicial del parámetro bimester
+const maxIndex = 10;  // Define el máximo valor que puede tener el bimester
+const minIndex = 1;   // Define el valor mínimo para el bimester
+const prevBtn = document.querySelector('.prev-btn') as HTMLButtonElement;
+const nextBtn = document.querySelector('.next-btn') as HTMLButtonElement;
+
+function updateButtons(): void {
+  // Deshabilitar botones si estás en el primer o último bimester
+  prevBtn.disabled = currentIndex === minIndex;
+  nextBtn.disabled = currentIndex === maxIndex;
+}
+
+function navigateToNewRoute() {
+  const newUrl = `/salon/225?bimester=${currentIndex}`;
+  window.location.href = newUrl;
+}
+
+// Función para avanzar
+nextBtn.addEventListener('click', () => {
+  if (currentIndex < maxIndex) {
+    currentIndex++;
+    console.log('Avanzar al bimester:', currentIndex);
+    navigateToNewRoute();
+  }
+});
+
+// Función para retroceder
+prevBtn.addEventListener('click', () => {
+  if (currentIndex > minIndex) {
+    currentIndex--;
+    console.log('Retroceder al bimester:', currentIndex);
+    navigateToNewRoute();
+  }
+});
+
+// Inicializa el estado de los botones al cargar la página
+updateButtons();
+
+  </script>
   
   <style>
     @media (min-width: 768px) {

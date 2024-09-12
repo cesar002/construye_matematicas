@@ -1,9 +1,18 @@
 ---
 import TitlesPage from "../components/TitlesPage.astro";
 import HexagonoPages from "../components/HexagonoPage.astro";
+
+
+
+interface Props {
+  title: string;
+classroom?:string;
+}
+
+const { title, classroom } = Astro.props;
 ---
 
-<TitlesPage title="Actividad 1  Número. Adición y sustracción" />
+<TitlesPage title={title} />
 
 <div class="d-flex flex-column flex-lg-row justify-content-between record-nav">
   {
@@ -22,8 +31,12 @@ import HexagonoPages from "../components/HexagonoPage.astro";
         }`}
         href={
           name === "Classroom"
-            ? "https://classroom.google.com/c/MTU4MTk4MTMyODM2"
-            : undefined
+            ? (classroom)
+            : name === "Idea y Crea"
+            ? "#ideacreate"
+            : name === "Descubre"
+            ? "#discover"
+            : name 
         }
       />
     ))

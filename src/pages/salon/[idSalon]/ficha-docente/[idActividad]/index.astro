@@ -1,7 +1,8 @@
 ---
+// Parte del servidor (antes del renderizado)
 import Layout from "../../../../../layouts/Layout.astro";
 import EncabezadoPage from "../../../../../components/EncabezadoPage.astro";
-import Contenido from "../../../../../components/Contenido.astro"
+import Contenido from "../../../../../components/Contenido.astro";
 import FichaDocenteService from "../../../../../dominio/FichaDocente/services/FichaDocente.service";
 import FichaDocenteLegacyRepository from "../../../../../dominio/FichaDocente/repository/FichaDocenteLegacy.repository";
 
@@ -9,39 +10,58 @@ const idSalon = Astro.params['idSalon'];
 const idActividad = Astro.params['idActividad'];
 
 const fichaDocenteService = new FichaDocenteService(new FichaDocenteLegacyRepository());
-const fichaDocente = await fichaDocenteService.getFichaDocente(idSalon, idActividad);
+let fichaDocente = null;
+
+try {
+  fichaDocente = await fichaDocenteService.getFichaDocente(idSalon, idActividad);
+} catch (error) {
+  console.error("Error al obtener los datos del docente", error);
+}
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Construye tus matemáticas">
   <div class="content">
     <div class="record-wrapper">
-      
-      <EncabezadoPage />
-
-      <hr />
-      <hr />
-
-      <Contenido
-      name="discover"
-      imgs={['https://cmsv3dev.potencia.mx/web/content/potencia.cms.section.content/8/image']}
-      class="discover-title"
-      title="Descubre"
-      
-      
-      />
-
-      <Contenido
-      name="ideacreate"
-      imgs={['https://cmsv3dev.potencia.mx/web/content/potencia.cms.section.content/9/image','https://cmsv3dev.potencia.mx/web/content/potencia.cms.section.content/10/image']}
-      class="ideacreate-title"
-      title="Idea"
-      
-      
-      />
-     
-
-      <hr />
-      
+      {fichaDocente ? (
+        <>
+          <EncabezadoPage title={fichaDocente.name + " | " + fichaDocente.sequence.name} classroom={fichaDocente.classroom.googleClassLink} />
+          <hr />
+          <hr/>
+          <Contenido
+            name="discover"
+            imgs={fichaDocente.discover.cmsdiscover.map((discoverItem) => discoverItem.content.image)}
+            class="discover-title"
+            title="Descubre"
+          />
+          <Contenido
+            name="ideacreate"
+            imgs={fichaDocente.idea.cmsidea.map((ideaItem) => ideaItem.content.image)}
+            class="ideacreate-title"
+            title="Idea"
+          />
+          <hr />
+        </>
+      ) : (
+        <div class="loading-screen">
+          <p>Cargando...</p>
+        </div>
+      )}
     </div>
   </div>
 </Layout>
+
+<style>
+  .loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .loading-screen p {
+    font-size: 1.5rem;
+    color: #333;
+  }
+</style>

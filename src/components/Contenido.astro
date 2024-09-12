@@ -9,7 +9,7 @@ interface Props {
 const { title, imgs, class: className, name } = Astro.props as Props;
 ---
 
-<div data-name={name}>
+<div id={name} data-name={name}>
   <h1 class={className}>{title}</h1>
   { imgs.slice(0, 10).map((img) => (
     <img class="_img-responsive img-framed" src={img} alt="Image" />
