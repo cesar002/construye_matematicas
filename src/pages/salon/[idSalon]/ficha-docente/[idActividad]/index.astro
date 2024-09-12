@@ -1,7 +1,15 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import EncabezadoPage from "../../components/EncabezadoPage.astro";
-import Contenido from "../../components/Contenido.astro"
+import Layout from "../../../../../layouts/Layout.astro";
+import EncabezadoPage from "../../../../../components/EncabezadoPage.astro";
+import Contenido from "../../../../../components/Contenido.astro"
+import FichaDocenteService from "../../../../../dominio/FichaDocente/services/FichaDocente.service";
+import FichaDocenteLegacyRepository from "../../../../../dominio/FichaDocente/repository/FichaDocenteLegacy.repository";
+
+const idSalon = Astro.params['idSalon'];
+const idActividad = Astro.params['idActividad'];
+
+const fichaDocenteService = new FichaDocenteService(new FichaDocenteLegacyRepository());
+const fichaDocente = await fichaDocenteService.getFichaDocente(idSalon, idActividad);
 ---
 
 <Layout title="Welcome to Astro.">

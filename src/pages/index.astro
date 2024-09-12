@@ -1,51 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hexagono from "../components/Hexagono.astro";
+import ClassroomService from "../dominio/Classrooms/services/Classroom.service";
+import ClassroomLegacyRepository from "../dominio/Classrooms/repository/ClassroomLegacy.repository";
+
+const classRoomService = new ClassroomService(new ClassroomLegacyRepository());
+const classrooms = await classRoomService.getClassrooms();
+
 ---
 
 <Layout title="Welcome to Astro.">
   <div class="honeycomb">
     <div class="honeycomb-row flex-wrap flex-md-nowrap">
+      { classrooms?.map(classR => 
       <Hexagono
         title="Construye tus matemáticas"
-        href="/salon"
-        clave="Clav0000"
+        href={`/salon/${classR.id}?bimester=1`}
+        clave={ classR.group.name }
         descarga="Descarga material"
       />
-      <Hexagono
-        title="Otro hexágono"
-        href="/salon"
-        clave="Otro hexágono"
-        descarga="Descarga otro material"
-      />
-      <Hexagono
-        title="Más hexágonos"
-        href="/salon"
-        clave="Clave000000"
-        descarga="Descarga más material"
-      />
-      <Hexagono
-        title="Construye tus matemáticas"
-        href="/salon"
-        clave="Construye tus matemáticas"
-        descarga="Descarga material"
-      />
-      <Hexagono
-        title="Otro hexágono"
-        href="/salon"
-        clave="Otro hexágono"
-        descarga="Descarga otro material"
-      />
-      <Hexagono
-        title="Más hexágonos"
-        href="/salon"
-        clave="Clave000000"
-        descarga="Descarga más material"
-        />
-      </div>
+      ) }
     </div>
+  </div>
     
-  </Layout>
+</Layout>
 
   
   <style>

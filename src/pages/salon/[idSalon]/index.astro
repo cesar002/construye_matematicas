@@ -1,7 +1,15 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Titles from "../../components/Titles.astro";
-import Activities from "../../components/Activities.astro";
+import Layout from "../../../layouts/Layout.astro";
+import Titles from "../../../components/Titles.astro";
+import Activities from "../../../components/Activities.astro";
+import ActividadesService from "../../../dominio/Actividades/services/Actividades.service";
+import ActividadesLegacyRepository from "../../../dominio/Actividades/repository/ActividadesLegacy.repository";
+
+const idSalon = Astro.params["idSalon"];
+
+const actividadesService = new ActividadesService(new ActividadesLegacyRepository());
+
+const actividades = await actividadesService.getActividades(idSalon);
 ---
 
 <Layout title="Welcome to Astro.">
