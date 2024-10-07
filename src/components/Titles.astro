@@ -1,24 +1,25 @@
 ---
 interface Props {
   title: string;
-
+  siguiente?: string;
+  anterior?: string;
 }
 
-const { title } = Astro.props;
+const { title, siguiente, anterior } = Astro.props;
 ---
 
 
-<div class="path-nav">
-    <button class="prev-btn btn-blank">
-      <i class="fa fa-angle-left" style="color: rgb(39, 118, 213);"></i>
-  </button>
+<div class="w-full flex justify-between items-center p-5 border-b-[3px] border-[#276ED5]">
+    <a href={anterior} class="prev-btn btn-blank">
+      <i class="text-2xl fa fa-angle-left" style="color: rgb(39, 118, 213);"></i>
+    </a>
     <h2
-      style="color: rgb(39, 118, 213); border-bottom: 3px solid rgb(39, 118, 213);"  >
+      style="color: rgb(39, 118, 213); border-bottom: none"  >
       {title}
     </h2>
-    <button class="next-btn btn-blank">
-      <i class="fa fa-angle-right" style="color: rgb(39, 118, 213);"></i>
-    </button>
+    <a href={siguiente} class="next-btn btn-blank">
+      <i class="text-2xl fa fa-angle-right" style="color: rgb(39, 118, 213);"></i>
+    </a>
   </div>
 
 

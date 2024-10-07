@@ -6,16 +6,80 @@ import HexagonoPages from "../components/HexagonoPage.astro";
 
 interface Props {
   title: string;
-classroom?:string;
+  classroom?:string;
+  imagenesDescubre?: string[];
+  imagenesCrea?: string[];
 }
 
-const { title, classroom } = Astro.props;
+const { title, classroom, imagenesDescubre = [], imagenesCrea = [] } = Astro.props;
+const imagenes =[ ...imagenesDescubre.map(img => `'${img}'`), ...imagenesCrea.map(img => `'${img}'`) ];
 ---
 
 <TitlesPage title={title} />
 
-<div class="d-flex flex-column flex-lg-row justify-content-between record-nav">
-  {
+<div class="d-flex flex-column flex-lg-row justify-content-between record-nav"
+  x-data={`{ 
+    modalOpen: false, 
+    imagenes: [${imagenes}], 
+    indiceActual: 0,
+    siguiente() {
+      if(this.indiceActual < (this.imagenes.length - 1)) {
+        this.indiceActual = this.indiceActual + 1;
+      }
+    },
+    anterior() {
+      if(this.indiceActual > 0){
+        this.indiceActual = this.indiceActual - 1;
+      }
+    }
+  }`}
+>
+  <HexagonoPages 
+    name="Descubre"
+    class="hexagon -discoverh"
+    href="#discover"
+  />
+  <HexagonoPages 
+    name="Idea y Crea"
+    class="hexagon -idea"
+    href="#ideacreate"
+  />
+
+  <div>
+    <button class="btn-blank" @click="modalOpen = true">
+      <div class="hexagon -playh">
+        <div class="left-side"></div>
+        <div class="right-side"></div>
+      </div>
+    </button>
+  </div>
+
+  <div x-show="modalOpen" x-cloak class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
+    <div @click.away="modalOpen = false" class="bg-white p-6 rounded-lg shadow-lg w-[70rem]">
+      <div class="preview">
+        <button class="btn-left" @click="anterior">
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <div class="flex justify-center items-center">
+          <div class="slide slide-image">
+            <img :src="imagenes[indiceActual]" alt="Imagen seleccionada">
+          </div>
+        </div>
+        <button class="btn-right" @click="siguiente">
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </button>
+        <button class="btn-close" @click="modalOpen = false" >
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- <HexagonoPages 
+    name="Descubre"
+    class="hexagon -playh"
+  /> -->
+  <!-- {
     ["Descubre", "Idea y Crea", "Classroom", ""].map((name, index) => (
       <HexagonoPages
         key={index}
@@ -40,13 +104,13 @@ const { title, classroom } = Astro.props;
         }
       />
     ))
-  }
+  } -->
 
-  <div class="record-actions">
+  <!-- <div class="record-actions">
     <br />
     <div class="-hexagon-line">
       <HexagonoPages class="hexagon -tiny -add" />
     </div>
     <HexagonoPages class="hexagon -tiny -view" />
-  </div>
+  </div> -->
 </div>

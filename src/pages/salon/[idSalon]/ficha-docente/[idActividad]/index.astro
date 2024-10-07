@@ -11,9 +11,13 @@ const idActividad = Astro.params['idActividad'];
 
 const fichaDocenteService = new FichaDocenteService(new FichaDocenteLegacyRepository());
 let fichaDocente = null;
+let imagenesDescubre: string[] = [];
+let imagenesCrea: string[] = [];
 
 try {
   fichaDocente = await fichaDocenteService.getFichaDocente(idSalon, idActividad);
+  imagenesDescubre = fichaDocente.discover.cmsdiscover.map((discoverItem) => discoverItem.content.image);
+  imagenesCrea = fichaDocente.idea.cmsidea.map((ideaItem) => ideaItem.content.image)
 } catch (error) {
   console.error("Error al obtener los datos del docente", error);
 }
@@ -24,18 +28,23 @@ try {
     <div class="record-wrapper">
       {fichaDocente ? (
         <>
-          <EncabezadoPage title={fichaDocente.name + " | " + fichaDocente.sequence.name} classroom={fichaDocente.classroom.googleClassLink} />
+          <EncabezadoPage 
+            title={fichaDocente.name + " | " + fichaDocente.sequence.name} 
+            classroom={fichaDocente.classroom.googleClassLink} 
+            imagenesDescubre={imagenesDescubre}
+            imagenesCrea={imagenesCrea}
+          />
           <hr />
           <hr/>
           <Contenido
             name="discover"
-            imgs={fichaDocente.discover.cmsdiscover.map((discoverItem) => discoverItem.content.image)}
+            imgs={imagenesDescubre}
             class="discover-title"
             title="Descubre"
           />
           <Contenido
             name="ideacreate"
-            imgs={fichaDocente.idea.cmsidea.map((ideaItem) => ideaItem.content.image)}
+            imgs={imagenesCrea}
             class="ideacreate-title"
             title="Idea"
           />
@@ -51,6 +60,13 @@ try {
 </Layout>
 
 <style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .boton-hexa {
+    width: 200px;
+  }
   .loading-screen {
     display: flex;
     justify-content: center;

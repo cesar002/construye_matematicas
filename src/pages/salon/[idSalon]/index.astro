@@ -4,13 +4,15 @@ import Titles from "../../../components/Titles.astro";
 import Activities from "../../../components/Activities.astro";
 import ActividadesService from "../../../dominio/Actividades/services/Actividades.service";
 import ActividadesLegacyRepository from "../../../dominio/Actividades/repository/ActividadesLegacy.repository";
+import ClassroomService from "../../../dominio/Classrooms/services/Classroom.service";
+import ClassroomLegacyRepository from "../../../dominio/Classrooms/repository/ClassroomLegacy.repository";
+import obtenerCercanosArreglo from '../../../Utils/ObtenerCercanosArreglo';
 
 const idSalon = Astro.params["idSalon"];
 
 const actividadesService = new ActividadesService(new ActividadesLegacyRepository());
 
 const actividades = await actividadesService.getActividades(idSalon);
-
 
 
 function chunkArray(arr: any[], chunkSize: number) {
@@ -23,10 +25,21 @@ function chunkArray(arr: any[], chunkSize: number) {
 
 
 const actividadesGrouped = chunkArray(actividades.results, 3);
+const classRoomService = new ClassroomService(new ClassroomLegacyRepository());
+const classrooms = await classRoomService.getClassrooms();
+const idsClassrooms = classrooms.map(clas => clas.id);
+const valoresCercanos = obtenerCercanosArreglo(idsClassrooms, Number(idSalon));
+
+const urlSiguiente = valoresCercanos.siguiente ? `/salon/${valoresCercanos.siguiente}` : `/salon/${idSalon}`
+const urlAnterior = valoresCercanos.anterior ? `/salon/${valoresCercanos.anterior}` : `/salon/${idSalon}`
 
 ---
 <Layout title="Construye tus matemáticas">
-  <Titles title={actividades.results[0].sequenceName} />
+  <Titles 
+    title={actividades.results[0].sequenceName}
+    siguiente={urlSiguiente}
+    anterior={urlAnterior}
+  />
 
   <div>
     <div class="path-wrapper">
@@ -37,7 +50,7 @@ const actividadesGrouped = chunkArray(actividades.results, 3);
               <Activities 
                 title={actividad.title} 
                 href={`${idSalon}/ficha-docente/${actividad.id}`} 
-                img={actividad.fileSmallThumbnail || "https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image"} 
+                img={actividad.fileSmallThumbnail.replace(/^https:\/\//, 'http://') || "https://cmsv3dev.potencia.mx/web/content/potencia.cms.learning.sequence.activity/4/image"} 
               />
             ))}
           </div>
